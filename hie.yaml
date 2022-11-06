@@ -1,0 +1,4 @@
+cradle:
+  cabal:
+    - path: "ch14-validating-numbers-into-words/src"
+      component: "lib:validating-numbers-into-words"
