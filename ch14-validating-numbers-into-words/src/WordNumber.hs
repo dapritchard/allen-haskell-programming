@@ -22,9 +22,9 @@ digits :: Int -> [Int]
 digits n = reverse (go n)
  where
   go n
-    | n < 0       = digits (-n)
-    | n < 9       = [n]
-    | otherwise   =  n `mod` 10 : go (n `div` 10)
+    | n <= -1   = digits (-n)
+    | n <= 9    = [n]
+    | otherwise =  n `mod` 10 : go (n `div` 10)
 
 wordNumber :: Int -> String
 wordNumber n
