@@ -1,4 +1,13 @@
 cradle:
-  cabal:
+  stack:
+    - path: "ch14-using-quickcheck/src"
+      component: "using-quickcheck:lib"
+
+    - path: "ch14-using-quickcheck/test"
+      component: "using-quickcheck:test:test-using-quickcheck"
+
     - path: "ch14-validating-numbers-into-words/src"
-      component: "lib:validating-numbers-into-words"
+      component: "validating-numbers-into-words:lib"
+
+    - path: "ch14-validating-numbers-into-words/test"
+      component: "validating-numbers-into-words:test:test-validating-numbers-into-words"
