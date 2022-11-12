@@ -1,12 +1,13 @@
 {-# HLINT ignore "Avoid reverse" #-}
 {-# HLINT ignore "Use concat" #-}
+{-# HLINT ignore "Redundant $" #-}
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 
 module UsingQuickCheckTest where
 
 import Data.List ( sort )
 import UsingQuickCheck
-import Test.Hspec ( SpecWith, hspec, it, shouldNotBe )
+import Test.Hspec ( hspec, it, shouldNotBe )
 import Test.QuickCheck ( Testable(..), NonZero (..) )
 
 main :: IO ()
@@ -40,23 +41,20 @@ main = hspec $ do
   -- Exercise 7
   it "reverse and reverse identity for Integers" $ do
     property prop_revRevIdentityIntegers
-  -- -- Exercise 8
-  -- TODO
+  -- Exercise 8
+  it "dollar operator is no-operation when squaring Integers" $ do
+    property prop_DollarIsNoOpSquareInt
   -- Exercise 9
   it "foldr with cons postpends a list to another list for Integers" $ do
     property prop_FoldrConsIsPostpendInteger
   it "foldr with binary concat is list concat for Integers" $ do
     property prop_FoldrBinaryConcatIsListConcatInteger
-  -- -- Exercise 10
-  -- TODO
-  -- -- Exercise 11
-  -- TODO
-
--- FIXME: example, delete this
-testHalfIdentity :: SpecWith ()
-testHalfIdentity =
-  it "s" $ do
-    property $ \x -> x + 1 > (x :: Int)
+  -- Exercise 10
+  it "lenth of `take n xs` is not `n` if `length xs` is less than `n`" $ do
+    lengthTakeN intVal2 length1List `shouldNotBe` intVal2
+  -- Exercise 11
+  it "read and show identity for lists of Integers" $ do
+    property prop_showReadListInteger
 
 
 {- 1. page 856 -----------------------------------------------------------------
@@ -214,6 +212,11 @@ f $ a = f a
 
 f . g = \x -> f (g x)
 -}
+prop_DollarIsNoOpSquareInt :: Integer -> Bool
+prop_DollarIsNoOpSquareInt = checkDollarIsNoOp (^ (2::Integer))
+
+checkDollarIsNoOp :: Eq b => (a -> b) -> a -> Bool
+checkDollarIsNoOp f x = (f $ x) == f x
 
 
 {- 9. page 858 -----------------------------------------------------------------
@@ -243,6 +246,14 @@ Hm. Is that so?
 
 f n xs = length (take n xs) == n
 -}
+lengthTakeN :: Int -> [a] -> Int
+lengthTakeN n xs = length (take n xs)
+
+intVal2 :: Int
+intVal2 = 2
+
+length1List :: [Int]
+length1List = [1]
 
 
 {- 11. page 858 ----------------------------------------------------------------
@@ -253,3 +264,8 @@ trip.” Well, now you can test that it works:
 
 f x = (read (show x)) == x
 -}
+prop_showReadListInteger :: [Integer] -> Bool
+prop_showReadListInteger = checkReadShow
+
+checkReadShow :: (Eq a, Read a, Show a) => a -> Bool
+checkReadShow x = read (show x) == x
