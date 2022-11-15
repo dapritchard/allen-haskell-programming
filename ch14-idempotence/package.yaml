@@ -25,3 +25,4 @@ tests:
     dependencies:
       - base ^>= 4.15.1
       - hspec ^>= 2.8.5
+      - QuickCheck ^>= 2.14.2

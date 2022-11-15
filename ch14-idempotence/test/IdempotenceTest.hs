@@ -1,6 +1,9 @@
 module IdempotenceTest where
 
-import Test.Hspec ( hspec, it, shouldNotBe )
+import Data.Char ( toUpper )
+import Data.List ( sort )
+import Test.Hspec ( hspec, it )
+import Test.QuickCheck ( Testable(..) )
 
 {- Idempotence: pages 859-860 --------------------------------------------------
 
@@ -22,8 +25,10 @@ fourTimes = twice . twice
 
 main :: IO ()
 main = hspec $ do
-  it "Exponentiation is not commutative" $ do
-    1 `shouldNotBe` (2::Integer)
+  it "String capitalization is idempotent" $ do
+    property f
+  it "sorting a list of Integers is idempotent" $ do
+    property prop_listIntegerIsIdempotent
 
 twice :: (a -> a) -> a -> a
 twice f = f . f
@@ -41,6 +46,15 @@ f x =
   (capitalizeWord x
   == fourTimes capitalizeWord x)
 -}
+f :: String -> Bool
+f x =
+  (capitalizeWord x == twice capitalizeWord x)
+  &&
+  (capitalizeWord x == fourTimes capitalizeWord x)
+
+capitalizeWord :: String -> String
+capitalizeWord []     = []
+capitalizeWord (x:xs) = toUpper x : xs
 
 
 {- 2. Page 860 -----------------------------------------------------------------
@@ -52,3 +66,11 @@ f' x =
   (sort x
   == fourTimes sort x)
 -}
+prop_listIntegerIsIdempotent :: [Integer] -> Bool
+prop_listIntegerIsIdempotent = f'
+
+f' :: Ord a => [a] -> Bool
+f' x =
+  (sort x == twice sort x)
+  &&
+  (sort x == fourTimes sort x)
