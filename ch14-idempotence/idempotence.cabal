@@ -1,0 +1,23 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           idempotence
+version:        0.1.0.0
+synopsis:       Investigate floating point precision
+build-type:     Simple
+
+test-suite test-idempotence
+  type: exitcode-stdio-1.0
+  main-is: IdempotenceTest.hs
+  other-modules:
+      Paths_idempotence
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N -main-is IdempotenceTest
+  build-depends:
+      base >=4.15.1 && <4.16
+    , hspec >=2.8.5 && <2.9
+  default-language: Haskell2010

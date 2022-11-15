@@ -3,6 +3,9 @@ cradle:
     - path: "ch14-failure/test"
       component: "failure:test:test-failure"
 
+    - path: "ch14-idempotence/test"
+      component: "idempotence:test:test-idempotence"
+
     - path: "ch14-using-quickcheck/test"
       component: "using-quickcheck:test:test-using-quickcheck"
 
