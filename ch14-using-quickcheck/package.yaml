@@ -13,11 +13,6 @@ ghc-options:
   - -Wredundant-constraints
   - -Wno-name-shadowing
 
-library:
-  source-dirs: src
-  dependencies:
-    - base ^>= 4.15.1
-
 tests:
   test-using-quickcheck:
     main:                UsingQuickCheckTest.hs
@@ -31,4 +26,3 @@ tests:
       - base ^>= 4.15.1
       - hspec ^>= 2.8.5
       - QuickCheck ^>= 2.14.2
-      - using-quickcheck

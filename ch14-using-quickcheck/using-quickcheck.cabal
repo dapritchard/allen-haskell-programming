@@ -9,18 +9,6 @@ version:        0.1.0.0
 synopsis:       Test some basic properties using QuickCheck.
 build-type:     Simple
 
-library
-  exposed-modules:
-      UsingQuickCheck
-  other-modules:
-      Paths_using_quickcheck
-  hs-source-dirs:
-      src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-name-shadowing
-  build-depends:
-      base >=4.15.1 && <4.16
-  default-language: Haskell2010
-
 test-suite test-using-quickcheck
   type: exitcode-stdio-1.0
   main-is: UsingQuickCheckTest.hs
@@ -33,5 +21,4 @@ test-suite test-using-quickcheck
       QuickCheck >=2.14.2 && <2.15
     , base >=4.15.1 && <4.16
     , hspec >=2.8.5 && <2.9
-    , using-quickcheck
   default-language: Haskell2010

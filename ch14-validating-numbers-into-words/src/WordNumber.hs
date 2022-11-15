@@ -1,3 +1,6 @@
+{-# HLINT ignore "Use intercalate" #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+
 module WordNumber where
 
 import Data.List (intersperse)
@@ -28,7 +31,7 @@ digits n = reverse (go n)
 
 wordNumber :: Int -> String
 wordNumber n
-  | n < 0 = "negative " ++ go n
+  | n < 0     = "negative " ++ go n
   | otherwise = go n
  where
   -- We could simplify this by using `intercalate` here, but we'll stick to

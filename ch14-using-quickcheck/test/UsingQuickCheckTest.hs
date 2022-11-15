@@ -6,7 +6,6 @@
 module UsingQuickCheckTest where
 
 import Data.List ( sort )
-import UsingQuickCheck
 import Test.Hspec ( hspec, it, shouldNotBe )
 import Test.QuickCheck ( Testable(..), NonZero (..) )
 
@@ -50,7 +49,7 @@ main = hspec $ do
   it "foldr with binary concat is list concat for Integers" $ do
     property prop_FoldrBinaryConcatIsListConcatInteger
   -- Exercise 10
-  it "lenth of `take n xs` is not `n` if `length xs` is less than `n`" $ do
+  it "length of `take n xs` is not `n` if `length xs` is less than `n`" $ do
     lengthTakeN intVal2 length1List `shouldNotBe` intVal2
   -- Exercise 11
   it "read and show identity for lists of Integers" $ do
@@ -73,6 +72,9 @@ checkHalfIdentity x = halfIdentity x == x
 
 halfIdentity :: Fractional a => a -> a
 halfIdentity = (*2) . half
+
+half :: Fractional a => a -> a
+half x = x / 2
 
 
 {- 2. page 856 -----------------------------------------------------------------
