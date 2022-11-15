@@ -9,6 +9,11 @@ import Data.List ( sort )
 import Test.Hspec ( hspec, it, shouldNotBe )
 import Test.QuickCheck ( Testable(..), NonZero (..) )
 
+{- Using QuickCheck: pages 856-858 ---------------------------------------------
+
+Test some basic properties using QuickCheck.
+-}
+
 main :: IO ()
 main = hspec $ do
   -- Exercise 1
