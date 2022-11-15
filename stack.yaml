@@ -30,8 +30,9 @@ resolver:
 #   - auto-update
 #   - wai
 packages:
-- ch14-validating-numbers-into-words
+- ch14-failure
 - ch14-using-quickcheck
+- ch14-validating-numbers-into-words
 
 # Dependency packages to be pulled from upstream that are not in the resolver.
 # These entries can reference officially published versions as well as

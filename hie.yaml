@@ -1,7 +1,7 @@
 cradle:
   stack:
-    - path: "ch14-using-quickcheck/src"
-      component: "using-quickcheck:lib"
+    - path: "ch14-failure/test"
+      component: "failure:test:test-failure"
 
     - path: "ch14-using-quickcheck/test"
       component: "using-quickcheck:test:test-using-quickcheck"
