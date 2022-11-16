@@ -1,6 +1,6 @@
-name:                idempotence
+name:                make-a-gen-random-generator
 version:             0.1.0.0
-synopsis:            Use QuickCheck to demonstrate idempotence
+synopsis:            Make a Gen random generator for the datatype
 
 ghc-options:
   - -Wall
@@ -14,14 +14,14 @@ ghc-options:
   - -Wno-name-shadowing
 
 tests:
-  test-idempotence:
-    main:                IdempotenceTest.hs
+  test-make-a-gen-random-generator:
+    main:                RandomGenTest.hs
     source-dirs:         test
     ghc-options:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
-      - -main-is IdempotenceTest
+      - -main-is RandomGenTest
     dependencies:
       - base ^>= 4.15.1
       - hspec ^>= 2.8.5

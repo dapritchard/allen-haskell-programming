@@ -6,6 +6,9 @@ cradle:
     - path: "ch14-idempotence/test"
       component: "idempotence:test:test-idempotence"
 
+    - path: "ch14-make-a-gen-random-generator/test"
+      component: "make-a-gen-random-generator:test:test-make-a-gen-random-generator"
+
     - path: "ch14-using-quickcheck/test"
       component: "using-quickcheck:test:test-using-quickcheck"
 

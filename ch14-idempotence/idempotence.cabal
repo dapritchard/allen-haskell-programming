@@ -6,7 +6,7 @@ cabal-version: 1.12
 
 name:           idempotence
 version:        0.1.0.0
-synopsis:       Investigate floating point precision
+synopsis:       Use QuickCheck to demonstrate idempotence
 build-type:     Simple
 
 test-suite test-idempotence
