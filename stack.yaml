@@ -32,6 +32,7 @@ resolver:
 packages:
 - ch14-failure
 - ch14-make-a-gen-random-generator
+- ch14-hangman-testing
 - ch14-idempotence
 - ch14-using-quickcheck
 - ch14-validating-numbers-into-words
