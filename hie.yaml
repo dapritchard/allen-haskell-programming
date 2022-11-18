@@ -3,6 +3,12 @@ cradle:
     - path: "ch14-failure/test"
       component: "failure:test:test-failure"
 
+    - path: "ch14-hangman-testing/app/Main.hs"
+      component: "hangman-testing:exe:hangman-testing-exe"
+
+    - path: "ch14-hangman-testing/test"
+      component: "hangman-testing:test:test-hangman-testing"
+
     - path: "ch14-idempotence/test"
       component: "idempotence:test:test-idempotence"
 

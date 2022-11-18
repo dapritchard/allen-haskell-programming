@@ -17,9 +17,6 @@ ghc-options:
   - -Wredundant-constraints
   - -Wno-name-shadowing
 
-library:
-  source-dirs: src
-
 executables:
   hangman-testing-exe:
     main:                Main.hs
@@ -29,7 +26,8 @@ executables:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-    - hangman-testing
+      - random
+      - split
 
 tests:
   test-hangman-testing:
@@ -40,4 +38,4 @@ tests:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - hangman-testing
+      {}

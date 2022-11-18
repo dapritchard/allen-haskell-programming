@@ -9,18 +9,6 @@ version:        0.1.0.0
 description:    Test the hangman project
 build-type:     Simple
 
-library
-  exposed-modules:
-      Lib
-  other-modules:
-      Paths_hangman_testing
-  hs-source-dirs:
-      src
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-name-shadowing
-  build-depends:
-      base >=4.15.1 && <4.16
-  default-language: Haskell2010
-
 executable hangman-testing-exe
   main-is: Main.hs
   other-modules:
@@ -30,7 +18,8 @@ executable hangman-testing-exe
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.15.1 && <4.16
-    , hangman-testing
+    , random
+    , split
   default-language: Haskell2010
 
 test-suite test-hangman-testing
@@ -43,5 +32,4 @@ test-suite test-hangman-testing
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-name-shadowing -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.15.1 && <4.16
-    , hangman-testing
   default-language: Haskell2010
