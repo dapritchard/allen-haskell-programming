@@ -1,6 +1,8 @@
 name:                validating-numbers-into-words
 version:             0.1.0.0
 synopsis:            Test 'numbers into words' routines
+verbatim:
+  cabal-version: 3.0
 
 ghc-options:
   - -Wall

@@ -1,6 +1,8 @@
 name:                make-a-gen-random-generator
 version:             0.1.0.0
 synopsis:            Make a Gen random generator for the datatype
+verbatim:
+  cabal-version: 3.0
 
 ghc-options:
   - -Wall

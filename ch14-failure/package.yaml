@@ -1,6 +1,8 @@
 name:                failure
 version:             0.1.0.0
 synopsis:            Investigate floating point precision
+verbatim:
+  cabal-version: 3.0
 
 ghc-options:
   - -Wall

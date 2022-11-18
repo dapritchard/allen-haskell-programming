@@ -1,6 +1,6 @@
-cabal-version: 1.12
+cabal-version: 3.0
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -14,6 +14,8 @@ library
       WordNumber
   other-modules:
       Paths_validating_numbers_into_words
+  autogen-modules:
+      Paths_validating_numbers_into_words
   hs-source-dirs:
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wno-name-shadowing
@@ -25,6 +27,8 @@ test-suite test-validating-numbers-into-words
   type: exitcode-stdio-1.0
   main-is: WordNumberTest.hs
   other-modules:
+      Paths_validating_numbers_into_words
+  autogen-modules:
       Paths_validating_numbers_into_words
   hs-source-dirs:
       test

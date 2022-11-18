@@ -1,6 +1,8 @@
 name:                using-quickcheck
 version:             0.1.0.0
 synopsis:            Test some basic properties using QuickCheck.
+verbatim:
+  cabal-version: 3.0
 
 ghc-options:
   - -Wall

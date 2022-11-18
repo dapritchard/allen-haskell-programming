@@ -1,6 +1,6 @@
-cabal-version: 1.12
+cabal-version: 3.0
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -13,6 +13,8 @@ test-suite test-using-quickcheck
   type: exitcode-stdio-1.0
   main-is: UsingQuickCheckTest.hs
   other-modules:
+      Paths_using_quickcheck
+  autogen-modules:
       Paths_using_quickcheck
   hs-source-dirs:
       test
