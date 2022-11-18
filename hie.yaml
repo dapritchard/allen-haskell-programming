@@ -3,6 +3,9 @@ cradle:
     - path: "ch14-failure/test"
       component: "failure:test:test-failure"
 
+    - path: "ch14-hangman-testing/src"
+      component: "hangman-testing:lib"
+
     - path: "ch14-hangman-testing/app/Main.hs"
       component: "hangman-testing:exe:hangman-testing-exe"
 

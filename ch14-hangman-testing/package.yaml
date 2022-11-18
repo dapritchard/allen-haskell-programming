@@ -1,6 +1,8 @@
 name:                hangman-testing
 version:             0.1.0.0
 description:         Test the hangman project
+verbatim:
+  cabal-version: 3.0
 
 dependencies:
   - base ^>= 4.15.1
@@ -19,17 +21,24 @@ ghc-options:
   - -Wredundant-constraints
   - -Wno-name-shadowing
 
+library:
+  source-dirs: src
+  exposed-modules:
+    - Hangman
+  dependencies:
+    - random ^>= 1.2.1
+    - split ^>= 0.2.3
+
 executables:
   hangman-testing-exe:
     main:                Main.hs
     source-dirs:         app
+    dependencies:
+      - hangman-testing
     ghc-options:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
-    dependencies:
-      - random ^>= 1.2.1
-      - split ^>= 0.2.3
 
 tests:
   test-hangman-testing:
@@ -39,5 +48,3 @@ tests:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
-    dependencies:
-      {}
