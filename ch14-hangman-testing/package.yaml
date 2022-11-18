@@ -5,13 +5,15 @@ description:         Test the hangman project
 dependencies:
   - base ^>= 4.15.1
 
+extra-source-files:
+  - data/dict.txt
+
 ghc-options:
   - -Wall
   - -Wcompat
   - -Widentities
   - -Wincomplete-record-updates
   - -Wincomplete-uni-patterns
-  - -Wmissing-export-lists
   - -Wmissing-home-modules
   - -Wpartial-fields
   - -Wredundant-constraints
@@ -26,8 +28,8 @@ executables:
       - -rtsopts
       - -with-rtsopts=-N
     dependencies:
-      - random
-      - split
+      - random ^>= 1.2.1
+      - split ^>= 0.2.3
 
 tests:
   test-hangman-testing:

@@ -14,6 +14,9 @@ import System.IO (BufferMode(NoBuffering),
                   stdout)
 import System.Random (randomRIO)
 
+
+-- Step Two: Generating a word list --------------------------------------------
+
 type WordList = [String]
 
 allWords :: IO WordList
@@ -31,46 +34,55 @@ gameWords :: IO WordList
 gameWords = do
   aw <- allWords
   return (filter gameLength aw)
-  where gameLength w =
-          let l = length (w :: String)
-          in  l >= minWordLength && l < maxWordLength
+  where
+    gameLength w =
+      let l = length (w :: String)
+      in  l >= minWordLength && l < maxWordLength
 
--- randomWord :: WordList -> IO String
--- randomWord wl = do
---   randomIndex <- randomRIO ( , )
---   -- fill this part in ^^^
---   return $ wl !! randomIndex
+randomWord :: WordList -> IO String
+randomWord wl = do
+  randomIndex <- randomRIO (0, length wl - 1)
+  return $ wl !! randomIndex
 
 randomWord' :: IO String
 randomWord' = gameWords >>= randomWord
 
-data Puzzle = Puzzle String [Maybe Char] [Char]
+
+-- Step Three: Making a puzzle -------------------------------------------------
+
+data Puzzle = Puzzle
+  String        -- the word we’re trying to guess
+  [Maybe Char]  -- the characters we’ve filled in so far
+  [Char]        -- the letters we’ve guessed so far
 
 instance Show Puzzle where
   show (Puzzle _ discovered guessed) =
-    (intersperse ' ' $
-     fmap renderPuzzleChar discovered)
-     ++ " Guessed so far: " ++ guessed
+    intersperse ' ' (fmap renderPuzzleChar discovered)
+      ++ " Guessed so far: "
+      ++ guessed
 
 freshPuzzle :: String -> Puzzle
-freshPuzzle = undefined
+freshPuzzle word = Puzzle word (replicate (length word) Nothing) []
 
 charInWord :: Puzzle -> Char -> Bool
-charInWord = undefined
+charInWord (Puzzle word _ _) c = c `elem` word
 
 alreadyGuessed :: Puzzle -> Char -> Bool
-alreadyGuessed = undefined
+alreadyGuessed (Puzzle _ _ guessed) c = c `elem` guessed
 
 renderPuzzleChar :: Maybe Char -> Char
-renderPuzzleChar = undefined
+renderPuzzleChar Nothing = '_'
+renderPuzzleChar (Just c) = c
 
 fillInCharacter :: Puzzle -> Char -> Puzzle
-fillInCharacter (Puzzle word filledInSoFar s) c =
-  Puzzle word newFilledInSoFar (c:s)
+fillInCharacter (Puzzle word discovered guessed) c =
+  Puzzle word newDiscovered (c:guessed)
   where
     zipper guessed wordChar guessChar =
-      if wordChar == guessed then Just wordChar else guessChar
-    newFilledInSoFar = zipWith (zipper c) word filledInSoFar
+      if wordChar == guessed
+      then Just wordChar
+      else guessChar
+    newDiscovered = zipWith (zipper c) word discovered
 
 handleGuess :: Puzzle -> Char -> IO Puzzle
 handleGuess puzzle guess = do
@@ -101,8 +113,9 @@ gameOver (Puzzle wordToGuess _ guessed) =
   else return ()
 
 gameWin :: Puzzle -> IO ()
-gameWin (Puzzle _ filledInSoFar _) =
-  if all isJust filledInSoFar then do
+gameWin (Puzzle _ discovered _) =
+  if all isJust discovered
+  then do
     putStrLn "You win!"
     exitSuccess
   else return ()
