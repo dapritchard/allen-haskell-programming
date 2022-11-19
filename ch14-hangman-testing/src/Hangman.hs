@@ -50,6 +50,7 @@ data Puzzle = Puzzle
   String        -- the word we’re trying to guess
   [Maybe Char]  -- the characters we’ve filled in so far
   [Char]        -- the letters we’ve guessed so far
+  deriving (Eq)
 
 instance Show Puzzle where
   show (Puzzle _ discovered guessed) =
