@@ -1,14 +1,10 @@
-{-# HLINT ignore "Use <$>" #-}
-{-# HLINT ignore "Use when" #-}
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-
 module Main where
 
-import Data.Char (toLower)
-import Hangman
-import System.IO (BufferMode(NoBuffering),
-                  hSetBuffering,
-                  stdout)
+import Data.Char ( toLower )
+import Hangman   ( freshPuzzle, randomWord', runGame )
+import System.IO ( BufferMode(NoBuffering)
+                 , hSetBuffering
+                 , stdout )
 
 main :: IO ()
 main = do

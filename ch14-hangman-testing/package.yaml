@@ -44,7 +44,11 @@ tests:
   test-hangman-testing:
     main:                Spec.hs
     source-dirs:         test
+    dependencies:
+      - hangman-testing
+      - hspec ^>= 2.8.5
     ghc-options:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+      - -main-is Spec

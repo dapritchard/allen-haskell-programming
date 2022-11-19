@@ -1,3 +1,7 @@
+{-# HLINT ignore "Use <$>" #-}
+{-# HLINT ignore "Use when" #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+
 module Hangman where
 
 import Control.Monad (forever)
