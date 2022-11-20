@@ -1,0 +1,41 @@
+name:                validating-ciphers
+version:             0.1.0.0
+description:         Validating the Caesar and Vigenère ciphers
+verbatim:
+  cabal-version: 3.0
+
+dependencies:
+  - base ^>= 4.15.1
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints
+  - -Wno-name-shadowing
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Ciphers
+  # dependencies:
+  #   - random ^>= 1.2.1
+  #   - split ^>= 0.2.3
+
+tests:
+  ciphers-test:
+    main:                CiphersTest.hs
+    source-dirs:         test
+    dependencies:
+      - QuickCheck ^>= 2.14.2
+      - validating-ciphers
+      - hspec ^>= 2.8.5
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -main-is CiphersTest

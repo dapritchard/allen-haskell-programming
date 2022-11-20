@@ -35,6 +35,7 @@ packages:
 - ch14-hangman-testing
 - ch14-idempotence
 - ch14-using-quickcheck
+- ch14-validating-ciphers
 - ch14-validating-numbers-into-words
 
 # Dependency packages to be pulled from upstream that are not in the resolver.

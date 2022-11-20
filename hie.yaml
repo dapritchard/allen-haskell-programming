@@ -21,6 +21,12 @@ cradle:
     - path: "ch14-using-quickcheck/test"
       component: "using-quickcheck:test:test-using-quickcheck"
 
+    - path: "ch14-validating-ciphers/src"
+      component: "validating-ciphers:lib"
+
+    - path: "ch14-validating-ciphers/test"
+      component: "validating-ciphers:test:ciphers-test"
+
     - path: "ch14-validating-numbers-into-words/src"
       component: "validating-numbers-into-words:lib"
 
