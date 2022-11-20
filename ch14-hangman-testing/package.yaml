@@ -30,8 +30,8 @@ library:
     - split ^>= 0.2.3
 
 executables:
-  hangman-testing-exe:
-    main:                Main.hs
+  hangman-app:
+    main:                HangmanApp.hs
     source-dirs:         app
     dependencies:
       - hangman-testing
@@ -39,10 +39,11 @@ executables:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
+      - -main-is HangmanApp
 
 tests:
-  test-hangman-testing:
-    main:                Spec.hs
+  hangman-test:
+    main:                HangmanTest.hs
     source-dirs:         test
     dependencies:
       - QuickCheck ^>= 2.14.2
@@ -52,4 +53,4 @@ tests:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
-      - -main-is Spec
+      - -main-is HangmanTest

@@ -1,4 +1,4 @@
-module Main where
+module HangmanApp where
 
 import Data.Char ( toLower )
 import Hangman   ( freshPuzzle, randomWord', runGame )

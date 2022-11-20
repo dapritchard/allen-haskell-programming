@@ -1,4 +1,4 @@
-module Spec where
+module HangmanTest where
 
 import Test.Hspec ( describe, hspec, it, shouldBe, shouldReturn )
 import Test.QuickCheck ( Testable(..) )

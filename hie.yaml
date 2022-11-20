@@ -6,11 +6,11 @@ cradle:
     - path: "ch14-hangman-testing/src"
       component: "hangman-testing:lib"
 
-    - path: "ch14-hangman-testing/app/Main.hs"
-      component: "hangman-testing:exe:hangman-testing-exe"
+    - path: "ch14-hangman-testing/app/HangmanApp.hs"
+      component: "hangman-testing:exe:hangman-app"
 
     - path: "ch14-hangman-testing/test"
-      component: "hangman-testing:test:test-hangman-testing"
+      component: "hangman-testing:test:hangman-test"
 
     - path: "ch14-idempotence/test"
       component: "idempotence:test:test-idempotence"
