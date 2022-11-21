@@ -1,6 +1,6 @@
 module Ciphers where
 
-import Data.Char ( chr, isLower, isUpper, ord )
+import Data.Char ( chr, isAsciiLower, isAsciiUpper, ord )
 
 caesar :: Int -> String -> String
 caesar shiftBy = map (caesarLetter shiftBy)
@@ -13,8 +13,8 @@ vigenere keyword message = go offsets message
     offsets = map calcOffset keyword
       where
         calcOffset c
-          | isUpper c = ord c - ord 'A'
-          | isLower c = ord c - ord 'a'
+          | isAsciiUpper c = ord c - ord 'A'
+          | isAsciiLower c = ord c - ord 'a'
           | otherwise = 0
 
     go _ []          = []
@@ -23,8 +23,8 @@ vigenere keyword message = go offsets message
 
 caesarLetter :: Int -> Char -> Char
 caesarLetter shiftBy c
-  | isUpper c = shiftLetter shiftBy (ord 'A') c
-  | isLower c = shiftLetter shiftBy (ord 'a') c
+  | isAsciiUpper c = shiftLetter shiftBy (ord 'A') c
+  | isAsciiLower c = shiftLetter shiftBy (ord 'a') c
   | otherwise = c
 
 shiftLetter :: Int -> Int -> Char -> Char

@@ -29,5 +29,23 @@ main = hspec $ do
           `shouldBe`
           "RFC osgai zpmul dmv hskncb mtcp rfc jyxw bme"
 
+    describe "property: length is unchanged" $ do
+      it "check length invariant" $ do
+        property prop_caesarLengthIsUnchanged
+
+    describe "property: -1 times `shiftBy` is caesar inverse" $ do
+      it "check caesar inverse" $ do
+        property prop_caesarRoundtrip
+
 fox :: String
 fox = "THE quick brown fox jumped over the lazy dog"
+
+prop_caesarLengthIsUnchanged :: Int -> String -> Bool
+prop_caesarLengthIsUnchanged shiftBy message =
+  length (caesar shiftBy message) == length message
+
+prop_caesarRoundtrip :: Int -> String -> Bool
+prop_caesarRoundtrip shiftBy message =
+  let encrypted = caesar shiftBy message
+      decrypted = caesar (-shiftBy) encrypted
+  in  decrypted == message
