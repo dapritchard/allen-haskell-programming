@@ -37,6 +37,45 @@ main = hspec $ do
       it "check caesar inverse" $ do
         property prop_caesarRoundtrip
 
+  describe "test vigenere" $ do
+
+    describe "empty keyword or message" $ do
+      it "empty keyword is no-op for empty message" $ do
+        vigenere "" "" `shouldBe` ""
+      it "empty keyword is no-op for nonempty message" $ do
+        vigenere "" fox `shouldBe` fox
+      it "nonempty keyword with empty message results in an empty message" $ do
+        vigenere "c" "" `shouldBe` ""
+
+    describe "keyword of all 'a's or non-Ascii alphabetical" $ do
+      it "'a' is no-op" $ do
+        vigenere "a" fox `shouldBe` fox
+      it "'aaaa' is no-op" $ do
+        vigenere "a" fox `shouldBe` fox
+      it "'?*&^' is no-op" $ do
+        vigenere "?*&^" fox `shouldBe` fox
+
+    describe "basic functionality" $ do
+      it "'b' keyword" $ do
+        vigenere "b" fox `shouldBe` caesar 1 fox
+      it "'c' keyword" $ do
+        vigenere "c" fox `shouldBe` caesar 2 fox
+      it "'abc' keyword" $ do
+        vigenere "abc" fox
+          `shouldBe`
+          -- "THE quick brown fox jumped over the lazy dog"  <- caesar 0 fox
+          -- "UIF rvjdl cspxo gpy kvnqfe pwfs uif mbaz eph"  <- caesar 1 fox
+          -- "VJG swkem dtqyp hqz lworgf qxgt vjg ncba fqi"  <- caesar 2 fox
+          "TIG rwidm ctoxp gqx lunree owgr vhf lbby foh"
+      it "'ABC' keyword" $ do
+        vigenere "ABC" fox
+          `shouldBe`
+          vigenere "abc" fox
+
+    describe "property: repeated keyword is same as single keyword" $ do
+      it "check repeated keyword" $ do
+        property prop_vigenereRepeatKeywordSameAsSingle
+
 fox :: String
 fox = "THE quick brown fox jumped over the lazy dog"
 
@@ -49,3 +88,8 @@ prop_caesarRoundtrip shiftBy message =
   let encrypted = caesar shiftBy message
       decrypted = caesar (-shiftBy) encrypted
   in  decrypted == message
+
+prop_vigenereRepeatKeywordSameAsSingle :: String -> String -> Bool
+prop_vigenereRepeatKeywordSameAsSingle keyword message =
+  let twice = keyword ++ keyword
+  in  vigenere twice message == vigenere keyword message
